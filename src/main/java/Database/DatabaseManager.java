@@ -93,14 +93,13 @@ public class DatabaseManager {
 
     public void importFromCSV(String filePath) {
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
-            String line = br.readLine(); // Пропускаем первую строку (заголовок)
+            String line = br.readLine();
 
             while ((line = br.readLine()) != null) {
                 String[] data = line.split(",");
                 if (data.length == 5) {
-                    // Создаем объект курса (ID = 0, так как база сама выдаст ID)
                     Course newCourse = new Course(0, data[1], data[2], data[3], data[4]);
-                    addCourse(newCourse); // Сохраняем в базу
+                    addCourse(newCourse);
                 }
             }
             System.out.println("Данные успешно импортированы из: " + filePath);
