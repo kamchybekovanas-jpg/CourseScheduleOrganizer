@@ -35,7 +35,7 @@ public class DatabaseManager {
         } catch (SQLException e) {
             System.err.println("Ошибка базы данных: " + e.getMessage());
         }
-        return null; // Если логин/пароль неверные
+        return null;
     }
 
     public void addCourse(Course course) {
@@ -54,7 +54,6 @@ public class DatabaseManager {
         }
     }
 
-    // 3. Метод CRUD: Чтение всех курсов (Read)
     public List<Course> getAllCourses() {
         List<Course> courses = new ArrayList<>();
         String query = "SELECT * FROM courses";
@@ -77,7 +76,6 @@ public class DatabaseManager {
         return courses;
     }
 
-    // 4. ТРЕБОВАНИЕ НА 10 БАЛЛОВ: Экспорт в CSV файл
     public void exportToCSV(String filePath) {
         List<Course> courses = getAllCourses();
         try (PrintWriter writer = new PrintWriter(new File(filePath))) {
@@ -93,7 +91,6 @@ public class DatabaseManager {
         }
     }
 
-    // 5. ТРЕБОВАНИЕ НА 10 БАЛЛОВ: Импорт из CSV файла
     public void importFromCSV(String filePath) {
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String line = br.readLine(); // Пропускаем первую строку (заголовок)
@@ -111,7 +108,6 @@ public class DatabaseManager {
             System.err.println("Ошибка импорта: " + e.getMessage());
         }
     }
-    // Метод CRUD: Обновление (Update)
     public void updateCourse(int id, String newTime) {
         String query = "UPDATE courses SET schedule_time = ? WHERE id = ?";
         try (Connection conn = DriverManager.getConnection(URL, USER, PASS);
@@ -124,7 +120,6 @@ public class DatabaseManager {
         }
     }
 
-    // Метод CRUD: Удаление (Delete)
     public void deleteCourse(int id) {
         String query = "DELETE FROM courses WHERE id = ?";
         try (Connection conn = DriverManager.getConnection(URL, USER, PASS);

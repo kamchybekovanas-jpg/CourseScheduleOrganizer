@@ -9,13 +9,12 @@ public class Course {
 
     public Course(int id, String courseName, String instructor, String scheduleTime, String dayOfWeek) {
         this.id = id;
-        setCourseName(courseName); // Используем сеттер для валидации
+        setCourseName(courseName);
         this.instructor = instructor;
         this.scheduleTime = scheduleTime;
         this.dayOfWeek = dayOfWeek;
     }
 
-    // Валидация (Требование проекта: Input Validation)
     public void setCourseName(String courseName) {
         if (courseName == null || courseName.trim().isEmpty()) {
             throw new IllegalArgumentException("Название курса не может быть пустым!");

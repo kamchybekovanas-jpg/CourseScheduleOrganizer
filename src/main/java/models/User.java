@@ -1,7 +1,6 @@
 package models;
 
 public abstract class User {
-    // Инкапсуляция: поля приватные
     private int id;
     private String username;
     private String password;
@@ -12,11 +11,9 @@ public abstract class User {
         this.password = password;
     }
 
-    // Геттеры для доступа к данным
     public int getId() { return id; }
     public String getUsername() { return username; }
     public String getPassword() { return password; }
 
-    // Абстрактный метод для Полиморфизма
     public abstract String getRoleName();
 }
